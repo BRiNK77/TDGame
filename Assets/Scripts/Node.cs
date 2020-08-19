@@ -134,6 +134,14 @@ public class Node : MonoBehaviour
         Debug.Log("Turret upgraded!");
     }
 
+    public void SellTurret()
+    {
+        PlayerStats.Energy += currentTurret.sell;
+        Destroy(turret);
+
+        Debug.Log("Turret Sold!");
+        
+    }
 
 
 }
