@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         
         // scales the enemies based off the round number
-        if (WaveSpawner.roundNum / 2 == 0 && scaled == false)
+        /*if (WaveSpawner.roundNum / 2 == 0 && scaled == false)
         {
             WaveSpawner.timeToSpawn += 2f;
             health += 2;
@@ -31,10 +31,10 @@ public class Enemy : MonoBehaviour
             cost = cost * 2;
             scaled = true;
         }
+        */
 
-
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        Vector3 dir = target.position - transform.position;  // creates vector to desired position based off current position
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World); // uses vector to move enemy to desired position at set speed
         // uses normalized to ensure correct direction with set float for speed, along with deltaTime to ensure
         // movement is not frame dependant
 
@@ -57,10 +57,10 @@ public class Enemy : MonoBehaviour
         target = Waypoints.points[wavepointIndex];
     }
 
+    // Function destroys enemy and reduces player HP if enemy reaches the last check point(ie home)
     void EndReached()
     {
         Destroy(gameObject);
-        WaveSpawner.enemiesLeft -= 1;
         PlayerStats.HP = PlayerStats.HP - damage;
         
     }
@@ -75,8 +75,9 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        WaveSpawner.enemiesLeft -= 1;
+        WaveSpawner.enemiesDestroyed += 1;
         PlayerStats.Energy += cost;
+
         Destroy(gameObject);
     }
 }
