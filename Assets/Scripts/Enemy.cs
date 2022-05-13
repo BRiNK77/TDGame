@@ -65,6 +65,15 @@ public class Enemy : MonoBehaviour
         
     }
 
+    public void scaleUp(int heal, int att, int spe, int cos)
+    {
+        health += heal;
+        damage += att;
+        speed += spe;
+        cost += cos;
+
+    }
+
     public void TakeDamage(int dama)
     {
         health -= dama;

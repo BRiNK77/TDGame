@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
+
 public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab1;      // enemy prefabs for spawning into game, along with their spawn point 
@@ -43,6 +45,7 @@ public class WaveSpawner : MonoBehaviour
         {
             RoundNum.text = roundNum.ToString();
             //TODO: show message for round completion
+
 
                                   // dont think this is working
             //Enemy.scaled = false; // sets scaled to false to begin checking if the next round should scale enemies
@@ -101,11 +104,43 @@ public class WaveSpawner : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         clear = true; // set clear to true
+                      // WHERE TO SCALE UP ENEMIES
+
+        doScaling(roundNum);
+
         roundNum++;   // increment round number
         // TODO: Notify player of next round end
 
 
+    }
 
+    void doScaling(int round)
+    {
+        Enemy e1 = enemyPrefab1.GetComponent<Enemy>(); // gets the enemy component to envoke scaling
+        Enemy e2 = enemyPrefab2.GetComponent<Enemy>();
+        Enemy e3 = enemyPrefab3.GetComponent<Enemy>();
+
+        if(round == 1)
+        {
+            e1.scaleUp(1, 0, 1, 0);
+            e2.scaleUp(1, 0, 0, 0);
+        }
+        if(round == 2)
+        {
+            e1.scaleUp(1, 1, 1, 1);
+            e2.scaleUp(2, 1, 1, 1);
+        }
+        if (round == 3)
+        {
+            e1.scaleUp(0, 1, 1, 1);
+            e2.scaleUp(2, 1, 1, 1);
+        }
+        if (round == 4)
+        {
+            e1.scaleUp(1, 1, 1, 1);
+            e2.scaleUp(2, 1, 1, 1);
+            e3.scaleUp(4, 2, 2, 2);
+        }
     }
 
     // function that will spawn an enemy type based on the int given
@@ -127,6 +162,9 @@ public class WaveSpawner : MonoBehaviour
         else if (num == 4)
         {
             Instantiate(enemyPrefab4, spawnPoint.position, spawnPoint.rotation);
+        } else if(num == 0)
+        {
+            // set flag for end of game
         }
 
 
@@ -205,6 +243,8 @@ public class WaveSpawner : MonoBehaviour
         if (roundNum == 9)
         {
             wave1Types = new int[] { 4 }; // 1
+            wave2Types = new int[] { 0 };
+            wave3Types = new int[] { 0 };
             return;
 
         }

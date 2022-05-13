@@ -142,11 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c937b2c235ebe46aa190a58aa3a9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
+  speed: 30
   bullet1Prefab: {fileID: 5006312923619947877, guid: e511f96ee0c128a4e9d6200f4e63b25a,
     type: 3}
   bullet2Prefab: {fileID: 7870547028319676976}
-  explosionRadius: 8
+  explosionRadius: 5
   damage: 2
 --- !u!1001 &6789439543055418537
 PrefabInstance:
