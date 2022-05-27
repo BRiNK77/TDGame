@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static int Energy;
     public Text energyOnHand;
-    public int startEnergy = 100; // initial starting money value to be set on static Money every time the game loads
+    public static int startEnergy = 50; // initial starting money value to be set on static Money every time the game loads
 
     public static int HP;
     public int startHP = 25;

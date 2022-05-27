@@ -109,7 +109,7 @@ MonoBehaviour:
     type: 3}
   impactEffect2: {fileID: 7229561022608521064, guid: b9608e443c9bab44bb1ceab6d09e2c44,
     type: 3}
-  speed: 8
+  speed: 7
   health: 4
   damage: 2
   cost: 2

@@ -22,16 +22,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
-        // scales the enemies based off the round number
-        /*if (WaveSpawner.roundNum / 2 == 0 && scaled == false)
-        {
-            WaveSpawner.timeToSpawn += 2f;
-            health += 2;
-            speed += 2;
-            cost = cost * 2;
-            scaled = true;
-        }
-        */
 
         Vector3 dir = target.position - transform.position;  // creates vector to desired position based off current position
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World); // uses vector to move enemy to desired position at set speed
@@ -72,6 +62,14 @@ public class Enemy : MonoBehaviour
         speed += spe;
         cost += cos;
 
+    }
+
+    public void setStats(int heal, int att, int spe, int cos)
+    {
+        health = heal;
+        damage = att;
+        speed = spe;
+        cost = cos;
     }
 
     public void TakeDamage(int dama)
